@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>Vue programing</title>
+  <link href="main.css" rel="stylesheet">
+</head>
+<body>
+  <div id="app">
+
+    <h3>データバインディング</h3>
+    <div id="dataBinding">
+      <h4>テキスト</h4>
+      <p>variable: {{ variable }}</p>
+      <h4>属性</h4>
+      <p v-bind:class="className">クラス属性を変数で設定してます</p>
+      <p :class="otherClassName">"v-bind"は省略できます</p>
+      <h4>Javascript式</h4>
+      <p>大丈夫ですか？: {{ okey ? 'はい' : 'いいえ' }}</p>
+      <p :class="colorName + '-text'">クラス属性に式を使ってます</p>
+    </div>
+
+    <h3>HTML属性バインディング</h3>
+    <div id="htmlBinding">
+      <h4>オブジェクト構文</h4>
+      <p v-bind:class="{ 'orange-text': isOrange }">isOrange</p>
+      <p v-bind:class="{ 'orange-text': isNotOrange }">isNotOrange</p>
+      <p v-bind:class="orangeClass">orangeClass</p>
+      <h4>配列構文</h4>
+      <p v-bind:class="[isOrange ? 'orange-text' : '']">isOrange</p>
+      <p v-bind:class="[isNotOrange ? 'orange-text' : '']">isNotOrange</p>
+      <p v-bind:class="[pinkTextClass, underLineClass]">pink and underline</p>
+    </div>
+
+
+    <h3>イベントハンドリング</h3>
+    <div id="eventHandle">
+      <h4>メソッドイベントハンドラ</h4>
+      <button v-on:click="countUp">+1</button>
+      <button @click="countDown">-1</button>
+      <p>counter: {{ counter }}</p>
+      <p>buttonName: {{ buttonName }}</p>
+      <h4>インラインメソッドハンドラ</h4>
+      <button v-on:click="addChar('o',  $event)">o</button>
+      <button v-on:click="addChar('x',  $event)">x</button>
+      <p>clickedChar: {{ clickedChar }}</p>
+      <p>buttonName2: {{ buttonName2 }}</p>
+    </div>
+
+    <h3>算出プロパティ</h3>
+    <div id="computedProperty">
+      <h4>computed</h4>
+      <p>value: {{ value }}</p>
+      <p>half: {{ half }}</p>
+      <h4>computedとmethodsの違い</h4>
+      <p>
+        methods: <span v-if="showed">{{ methods_now() }}</span>
+      </p>
+      <p>
+        computed: <span v-if="showed">{{ computed_now }}</span>
+      </p>
+      <button @click="toggle()">表示切り替え</button>
+      <h4>getter/setter</h4>
+    </div>
+
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
